@@ -47,3 +47,5 @@ print(corr)
 
 sns.heatmap(corr, annot=True)
 plt.show()
+sns.heatmap(corr, annot=True)
+plt.show()
