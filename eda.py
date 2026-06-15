@@ -26,3 +26,44 @@ plt.show()
 df["Balance"].describe()
 sns.histplot(df["Balance"])
 plt.show()
+df["Delinquency"].value_counts()
+sns.countplot(
+    x="Delinquency",
+    data=df
+)
+plt.show()
+# Previous payment
+df["Previous_Payments"].value_counts()
+df.groupby(
+    "Current_Payment"
+)["Balance"].mean()
+df.groupby(
+    "Current_Payment"
+)["Delinquency"].mean()
+df.groupby(
+    "Current_Payment"
+)["Age"].mean()
+df.["Recency"].describe()
+sns.boxplot(
+    x="Current_Payment",
+    y="Recency",
+    data=df
+)
+plt.show()
+# Correlation between all
+corr = df[
+    [
+        "Balance",
+        "Deliquency",
+        "Recency",
+        "Age",
+        "Current_Payment"
+    ]
+].corr()
+corr
+# Visualize the correlation
+sns.heatmap(
+    corr,
+    annot=True
+)
+plt.show()
